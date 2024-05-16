@@ -1,5 +1,8 @@
 package bank;
 import javax.swing.*;
+
+import AccAdmin.admin;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -94,12 +97,13 @@ public class login extends JFrame implements ActionListener{
 				String pass= pf2.getText();
 				String query="select *from clients where tel='"+tel+"' and pass='"+pass+"' ";
 				ResultSet rs=cf.smt.executeQuery(query);
+				admin A = new admin(tel);
 				if(rs.next()){
 					setVisible(false);
 					new Transactions(tel).setVisible(true);
-				}else if(tel.equals("admin")&&(pass.equals("admin"))){
+				}else if(tel.equals(A.getUsername())&&(pass.equals(A.getPass()))){
 					setVisible(false);
-					new TransactionsAgent(pass).setVisible(true);
+					new TransactionsAgent(tel).setVisible(true);
 				}
 				else{
 					JOptionPane.showMessageDialog(null,"Le numéro de téléphone ou le mot de passe est incorrect !");

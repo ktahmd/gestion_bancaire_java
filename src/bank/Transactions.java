@@ -67,7 +67,7 @@ public class Transactions extends JFrame implements ActionListener{
 
         //les info de client sur db
         if (rs.next()) {
-            lNum.setText(rs.getString("randNum"));
+            lNum.setText(rs.getString("id"));
             lNom.setText(rs.getString("nom"));
             lTel.setText(rs.getString("tel"));
         }

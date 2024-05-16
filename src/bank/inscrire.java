@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 // import com.toedter.calendar.*;
+// import java.util.Random;
 import java.util.Random;
 
 public class inscrire extends JFrame implements ActionListener{
@@ -17,9 +18,9 @@ public class inscrire extends JFrame implements ActionListener{
 	JRadioButton r1;
 	JRadioButton r2;
 	JButton b1, b2;
-	Random r= new Random();
-	long randNum = r.nextLong() %9000 +1000;
-	String numbre =""+Math.abs(randNum);
+	// Random r= new Random();
+	// long randNum = r.nextLong() %9000 +1000;
+	// String numbre =""+Math.abs(randNum);
 	// JDateChooser dt;
 
     public inscrire(){
@@ -158,7 +159,7 @@ public class inscrire extends JFrame implements ActionListener{
 	@Override
     public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == b1){
-					String formNum=numbre;
+					// String formNum=numbre;
 					String nom = tf2.getText();
 					String prenom = tf3.getText();
 					String tel = tf4.getText();
@@ -197,9 +198,31 @@ public class inscrire extends JFrame implements ActionListener{
 								JOptionPane.showMessageDialog(null,"Le numero téléphone est deja inscrit!");
 							}
 							else{
-								query="insert into clients values ('"+formNum+"','"+nom+"','"+prenom+"','"+tel+"','"+email+"','"+adress+"','"+gender+"',IFNULL('"+date_naissance+"', NULL),'"+pass+"')";
+								//Insert data into 'clients' table
+								query="insert into Clients(nom,prenom,tel,email,adress,gender,date_naissance,pass) values ('"+nom+"','"+prenom+"','"+tel+"','"+email+"','"+adress+"','"+gender+"',IFNULL('"+date_naissance+"', NULL),'"+pass+"')";
 								cf.smt.executeUpdate(query);
-								JOptionPane.showMessageDialog(null,"Inscription réussie");
+								// select la derinieur id client 
+								query = "SELECT LAST_INSERT_ID() AS last_id";
+								try (ResultSet generatedKeys = cf.smt.executeQuery(query)) {
+									if (generatedKeys.next()) {
+										int client_id = generatedKeys.getInt("last_id");
+										//random account num
+										String accountNum = generateAccountNumber();
+										//verification si le accountNum exist dans db ou non
+										query = "SELECT COUNT(*) AS count FROM clientAcc WHERE Acc_num = '" + accountNum + "'";
+										ResultSet rs2 = cf.smt.executeQuery(query);
+										rs2.next();
+										int count = rs2.getInt("count");
+										if (count > 0) {
+											accountNum = generateAccountNumber();
+										}
+										// Insert data into 'clientAcc' table
+										query = "INSERT INTO clientAcc(Acc_num, client_id, balance) VALUES ('" + accountNum + "', " + client_id + ", 0)";
+										cf.smt.executeUpdate(query);
+										//afficher une msg de reussie
+										JOptionPane.showMessageDialog(null, "Inscription réussie");
+									}
+								}
 							}
 							
 						}
@@ -215,6 +238,17 @@ public class inscrire extends JFrame implements ActionListener{
 			this.setVisible(false);
 			new login();
 		}
+	}
+	public static String generateAccountNumber() {
+		Random random = new Random();
+		StringBuilder accountNumber = new StringBuilder();
+		for (int i = 0; i < 10; i++) {
+			accountNumber.append(random.nextInt(10));
+		}
+		while (accountNumber.length() < 11) {
+			accountNumber.insert(0, '0');
+		}
+		return accountNumber.toString();
 	}
 
 }

@@ -2,7 +2,7 @@ package bank;
 import java.sql.*;
 public class Connctionfactory{
     Connection cnx;
-    Statement smt;
+    public Statement smt;
 
     public Connctionfactory(){
         //connection MYSQL

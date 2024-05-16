@@ -2,20 +2,23 @@ package bank;
 import java.awt.*;
 import java.awt.event.*;
 // import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.*;
 
+import AccAdmin.admin;
+
 
 public class TransactionsAgent extends JFrame implements ActionListener{
-    JLabel l1,l2,l3,l4,l5,l6,l7;
+    JLabel l1,l2,l3,l4,l5,l6,l7,tl,nom;
     JButton b0,b1,b2,b3,b4;
-    String pin;
+    String username;
 
     
-    public TransactionsAgent(String pin){
+    public TransactionsAgent(String username) throws SQLException{
         setTitle("Transation page");
         setLayout(null);
-        this.pin=pin;
+        this.username=username;
         l1=new JLabel("Systeme Bancaire");
 		l1.setFont(new Font("Arial",Font.BOLD, 35));
 		l1.setBounds(80,40,600,40);
@@ -29,20 +32,41 @@ public class TransactionsAgent extends JFrame implements ActionListener{
 		add(b0);
 		
 		//Num
-		l2=new JLabel("type du compte : admin");
+		l2=new JLabel("type du compte : Agence");
 		l2.setFont(new Font("Tohoma",Font.BOLD, 16));
 		l2.setBounds(80,100,230,20);
 		add(l2);
         //Nom
-		l3=new JLabel("Nom: Agent 1");
+		l3=new JLabel("Nom:");
 		l3.setFont(new Font("Tohoma",Font.BOLD, 16));
 		l3.setBounds(80,130,230,20);
 		add(l3);
+		nom=new JLabel("");
+		nom.setFont(new Font("Tohoma",Font.BOLD, 16));
+		nom.setBounds(210,130,230,20);
+		add(nom);
+		
+		
         //Telephone
-		l4=new JLabel("Tel: +222 22 32 20 20 20");
+		l4=new JLabel("Tel: ");
 		l4.setFont(new Font("Tohoma",Font.BOLD, 16));
 		l4.setBounds(80,160,230,20);
 		add(l4);
+		tl=new JLabel("");
+		tl.setFont(new Font("Tohoma",Font.BOLD, 16));
+		tl.setBounds(210,160,230,20);
+		add(tl);
+
+		
+		admin A;
+        try {
+            A = new admin(username);
+            nom.setText(A.getUsername());
+            tl.setText(A.getTel());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         //box
         l5 = new JLabel("");
         l5.setBounds(50, 200, 1180, 600);
@@ -112,8 +136,8 @@ public class TransactionsAgent extends JFrame implements ActionListener{
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new TransactionsAgent("");
+    public static void main(String[] args) throws SQLException {
+        new TransactionsAgent("admin1");
     }
 
     @Override
