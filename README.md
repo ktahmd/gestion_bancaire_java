@@ -68,6 +68,14 @@ insert into admin(user_name,pass,tel) values
 ("admin1","1234",27000032),
 ("admin2","1212",27000033);
 
+## Connexion à la base de données
+C'est localement :
+- Adresse : localhost
+- Port : 3306
+- User : root
+- Mot de passe : (vide)
+- Nom de la base de données : banque
+![img db](img/db.png)
 
 ## Chemin vers le fichier SQLJAR
 Ajoutez de nouveaux fichiers JAR externes sur le chemin de classe à partir de eclipse docier :
