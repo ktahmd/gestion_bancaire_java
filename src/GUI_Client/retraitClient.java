@@ -1,13 +1,13 @@
-package AccClient;
+package GUI_Client;
 
 import java.awt.*;
 import java.sql.SQLException;
 import javax.swing.*;
 
-public class deposeClient extends JFrame {
+public class retraitClient extends JFrame {
     JLabel l1, l2, lNum;
 
-    public deposeClient(String tel) {
+    public retraitClient(String tel) {
         setTitle("Depose argent");
         setLayout(new BorderLayout());
 
@@ -16,7 +16,7 @@ public class deposeClient extends JFrame {
         labelPanel.setLayout(new GridLayout(3, 1, 0, 10));
         labelPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        l1 = new JLabel("Pour déposer de l'argent");
+        l1 = new JLabel("Pour retrait de l'argent");
         l1.setFont(new Font("Arial", Font.BOLD, 35));
         l1.setHorizontalAlignment(SwingConstants.CENTER);
         labelPanel.add(l1);
@@ -56,5 +56,4 @@ public class deposeClient extends JFrame {
         setVisible(true);
         getContentPane().setBackground(Color.WHITE);
     }
-
 }

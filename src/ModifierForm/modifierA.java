@@ -1,32 +1,44 @@
-package bank;
+package ModifierForm;
 
 import javax.swing.*;
+
+import GUI_Client.Clients;
+import bank.Connctionfactory;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 // import com.toedter.calendar.*;
-import java.util.Random;
 
-public class inscrire extends JFrame implements ActionListener{
+public class modifierA extends JFrame implements ActionListener{
     JLabel l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11;
 	JLabel backgroundLabel;
 	JTextField tf1,tf2,tf3,tf4,tf5,tf6,tf7,tf8;
 	JPasswordField pf2;
 	JRadioButton r1;
 	JRadioButton r2;
-	JButton b1, b2;
+	JButton b1;
+	String Num;
+	String telold;
+	int id;
+	String g;
 	// Random r= new Random();
 	// long randNum = r.nextLong() %9000 +1000;
 	// String numbre =""+Math.abs(randNum);
 	// JDateChooser dt;
 
-    public inscrire(){
-        setTitle("Cree un compte bancaire");
+    public modifierA(String Num) throws SQLException{
+		this.Num=Num;
+		Clients C = new Clients(Num);
+		this.id=C.getId();
+		this.telold=C.getTel();
+		this.g= C.getGender();
+        setTitle("modifier un compte bancaire");
 		//bienvenue
 		setLayout(null);
-		l1=new JLabel("INSCRIRE");
+		l1=new JLabel("COMPTE");
 		l1.setFont(new Font("Arial",Font.BOLD, 35));
 		l1.setBounds(105,10,230,40);
 		add(l1);
@@ -38,6 +50,7 @@ public class inscrire extends JFrame implements ActionListener{
 		tf2=new JTextField(20);
 		tf2.setBounds(80,82,230,25);
 		tf2.setFont(new Font("Tohoma",Font.BOLD, 12));
+		tf2.setText(C.getNom());
 		add(tf2);
 		//prenom
 		l3=new JLabel("Prenom:");
@@ -47,6 +60,7 @@ public class inscrire extends JFrame implements ActionListener{
 		tf3=new JTextField(20);
 		tf3.setBounds(80,132,230,25);
 		tf3.setFont(new Font("Tohoma",Font.BOLD, 12));
+		tf3.setText(C.getPrenom());
 		add(tf3);
         //Telephone
 		l4=new JLabel("Numero Telephone:");
@@ -56,6 +70,7 @@ public class inscrire extends JFrame implements ActionListener{
 		tf4=new JTextField(20);
 		tf4.setBounds(80,184,230,25);
 		tf4.setFont(new Font("Tohoma",Font.BOLD, 12));
+		tf4.setText(C.getTel());
 		add(tf4);
         //email
         l5=new JLabel("Email:");
@@ -65,6 +80,7 @@ public class inscrire extends JFrame implements ActionListener{
 		tf5=new JTextField(20);
 		tf5.setBounds(80,234,230,25);
 		tf5.setFont(new Font("Tohoma",Font.BOLD, 12));
+		tf5.setText(C.getEmail());
 		add(tf5);
         //adress 
         l6=new JLabel("adress:");
@@ -74,6 +90,7 @@ public class inscrire extends JFrame implements ActionListener{
 		tf6=new JTextField(20);
 		tf6.setBounds(80,284,230,25);
 		tf6.setFont(new Font("Tohoma",Font.BOLD, 12));
+		tf6.setText(C.getAdress());
 		add(tf6);
         //gender
         l7=new JLabel("Gender:");
@@ -96,84 +113,63 @@ public class inscrire extends JFrame implements ActionListener{
 		bgGender.add(r2); // yay make it group for avoid the multi choose that so cool hhhhhhh
 
         //date naissance (jclander.jar)
-        l8=new JLabel("Date naissance:");
-		l8.setFont(new Font("Tohoma",Font.BOLD, 16));
-		l8.setBounds(80,340,230,20);
-        add(l8);
+        // l8=new JLabel("Date naissance:");
+		// l8.setFont(new Font("Tohoma",Font.BOLD, 16));
+		// l8.setBounds(80,340,230,20);
+        // add(l8);
 		// dt=new JDateChooser();
 		// dt.setBounds(150,340,230,12);
 		// add(dt);
 		//it not working idk why !!!
-        //password
-        l9=new JLabel("Password:");
-		l9.setFont(new Font("Tohoma",Font.BOLD, 16));
-		l9.setBounds(80,370,230,20);
-		add(l9);
-		pf2=new JPasswordField(20);
-		pf2.setBounds(80,394,230,25);
-		pf2.setFont(new Font("Tohoma",Font.BOLD, 12));
-		add(pf2);
+
+        // //password
+        // l9=new JLabel("Password:");
+		// l9.setFont(new Font("Tohoma",Font.BOLD, 16));
+		// l9.setBounds(80,370,230,20);
+		// add(l9);
+		// pf2=new JPasswordField(20);
+		// pf2.setBounds(80,394,230,25);
+		// pf2.setFont(new Font("Tohoma",Font.BOLD, 12));
+		// pf2.setText(C.getPass());
+		// add(pf2);
         
-		//inscrire
-		b1= new JButton("inscrire");
+		//buttom
+		b1= new JButton("save");
 		b1.setFont(new Font("Tohoma",Font.BOLD, 16));
-		b1.setBounds(120,430,150,30);
+		b1.setBounds(120,350,150,30);
 		b1.setBackground(Color.black);
 		b1.setForeground(Color.WHITE);
 		add(b1);
 		b1.addActionListener(this);
-		//retour to login button
-		b2= new JButton("connexion");
-		b2.setFont(new Font("Tohoma",Font.BOLD, 16));
-		b2.setBounds(120,470,150,30);
-		b2.setBackground(Color.black);
-		b2.setForeground(Color.WHITE);
-		add(b2);
-		b2.addActionListener(this);
-		//action des buttons
-		// b1.addActionListener(this);
-		// b2.addActionListener(this);
-		
-		//background
-        ImageIcon bk = new ImageIcon(getClass().getResource("icons/backgroundlogin.jpg"));
-		Image Ik=bk.getImage().getScaledInstance(800,560,Image.SCALE_DEFAULT);
-		ImageIcon i3=new ImageIcon(Ik);
-		JLabel iblimage=new JLabel(i3);
-		iblimage.setBounds(0,0,800,560);
-		add(iblimage);
 
-		// getContentPane().setLayout(new BorderLayout());
-		// getContentPane().add(new JLabel(backgroundImage), BorderLayout.CENTER);
 
-		// getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setSize(800,560);
-		setLocation(280,200);
+		setSize(400,500);
+		setLocationRelativeTo(null); 
 		
     }
 
-    @SuppressWarnings("deprecation")
+
 	@Override
     public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == b1){
-					// String formNum=numbre;
+					// String formNum=numbre; 
 					String nom = tf2.getText();
 					String prenom = tf3.getText();
-					String tel = tf4.getText();
+					String telnew = tf4.getText();
 					String email = tf5.getText();
 					String adress = tf6.getText();
-					String gender="X" ;
+					String gender=g;
 					if(r1.isSelected()){
 						gender = "F";
 					}
 					else if(r2.isSelected()){
 						gender = "H";
 					}
-					String date_naissance = null;
-					String pass = pf2.getText();
 					Connctionfactory cf=new Connctionfactory();
-					String query="select *from clients where tel='"+tel+"'";
+					String query="select *from clients where tel='"+telnew+"' and id !='"+id+"'";
 					try (ResultSet rs = cf.smt.executeQuery(query)) {
 						//insertion sur db
 						try{
@@ -190,37 +186,22 @@ public class inscrire extends JFrame implements ActionListener{
 							else if(tf6.getText().equals("")){
 								JOptionPane.showMessageDialog(null,"Entrez votre adress!","Erreur",JOptionPane.ERROR_MESSAGE);
 							}
-							else if(pf2.getText().equals("")){
-								JOptionPane.showMessageDialog(null,"Entrez votre password!","Erreur",JOptionPane.ERROR_MESSAGE);
-							}else if(rs.next()){
+                            else if(rs.next()){
 								JOptionPane.showMessageDialog(null,"Le numero téléphone est deja inscrit!","Erreur",JOptionPane.ERROR_MESSAGE);
 							}
 							else{
-								//Insert data into 'clients' table
-								query="insert into Clients(nom,prenom,tel,email,adress,gender,date_naissance,pass) values ('"+nom+"','"+prenom+"','"+tel+"','"+email+"','"+adress+"','"+gender+"',IFNULL('"+date_naissance+"', NULL),'"+pass+"')";
+								
+								// Update data into 'clients' table
+								query = "UPDATE clients SET " +
+								"nom = '" + nom + "', " +
+								"prenom = '" + prenom + "', " +
+								"tel = '" + telnew + "', " +
+								"email = '" + email + "', " +
+								"adress = '" + adress + "', " +
+								"gender = '" + gender + "'"  +
+								"WHERE id = " + id; 
 								cf.smt.executeUpdate(query);
-								// select la derinieur id client 
-								query = "SELECT LAST_INSERT_ID() AS last_id";
-								try (ResultSet generatedKeys = cf.smt.executeQuery(query)) {
-									if (generatedKeys.next()) {
-										int client_id = generatedKeys.getInt("last_id");
-										//random account num
-										String accountNum = generateAccountNumber();
-										//verification si le accountNum exist dans db ou non
-										query = "SELECT COUNT(*) AS count FROM clientAcc WHERE Acc_num = '" + accountNum + "'";
-										ResultSet rs2 = cf.smt.executeQuery(query);
-										rs2.next();
-										int count = rs2.getInt("count");
-										if (count > 0) {
-											accountNum = generateAccountNumber();
-										}
-										// Insert data into 'clientAcc' table
-										query = "INSERT INTO clientAcc(Acc_num, client_id, balance) VALUES ('" + accountNum + "', " + client_id + ", 0)";
-										cf.smt.executeUpdate(query);
-										//afficher une msg de reussie
-										JOptionPane.showMessageDialog(null, "Inscription réussie", "Succès", JOptionPane.PLAIN_MESSAGE);
-									}
-								}
+								JOptionPane.showMessageDialog(null, "Compte modifie avec succès.", "Succès", JOptionPane.INFORMATION_MESSAGE);
 							}
 							
 						}
@@ -231,22 +212,8 @@ public class inscrire extends JFrame implements ActionListener{
 						e1.printStackTrace();
 					}
 			}
-		else if(e.getSource() == b2){
-	
-			this.setVisible(false);
-			new login();
-		}
-	}
-	public static String generateAccountNumber() {
-		Random random = new Random();
-		StringBuilder accountNumber = new StringBuilder();
-		for (int i = 0; i < 10; i++) {
-			accountNumber.append(random.nextInt(10));
-		}
-		while (accountNumber.length() < 11) {
-			accountNumber.insert(0, '0');
-		}
-		return accountNumber.toString();
 	}
 
 }
+
+

@@ -1,4 +1,4 @@
-package AccClient;
+package GUI_Client;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

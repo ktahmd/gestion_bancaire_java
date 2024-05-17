@@ -1,39 +1,31 @@
-package AccClient;
+package GUI_Admin;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.util.Random;
+import javax.swing.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
+import GUI_Client.Clients;
 import bank.Connctionfactory;
 
-
-
-public class transfertClient extends JFrame implements ActionListener {
+public class deposeA extends JFrame implements ActionListener {
     JTextField tf1, tf2;
     JButton b1;
-    String tel;
-    public transfertClient(String tel) {
-        this.tel = tel;
-        setTitle("Transfert argent");
+    String username;
+    public deposeA(String username) {
+        this.username = username;
+        setTitle("Depose argent");
         setLayout(null); 
 
-        JLabel l1 = new JLabel("Transfert argent");
+        JLabel l1 = new JLabel("Depose argent");
         l1.setFont(new Font("Arial", Font.BOLD, 35));
         l1.setHorizontalAlignment(SwingConstants.CENTER);
         l1.setBounds(130, 10, 300, 40); 
         add(l1);
 
-        JLabel lblName = new JLabel("Numéro de téléphone:");
+        JLabel lblName = new JLabel("Numéro du compte:");
         lblName.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
         lblName.setHorizontalAlignment(SwingConstants.LEFT);
         lblName.setBounds(180, 120, 230, 20); 
@@ -70,26 +62,19 @@ public class transfertClient extends JFrame implements ActionListener {
         getContentPane().setBackground(Color.WHITE);
     }
 
-    public static void main(String[] args) {
-        new transfertClient("32323200");
-    }
+
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         try {
             if (ae.getSource() == b1) {
-                String tel1 = tel;
-                String tel2 = tf1.getText();
+                String AccNum = tf1.getText();
                 if(tf2.getText().matches("\\d+")){
                     int montant =Integer.valueOf(tf2.getText());
-                    Clients C1 = new Clients(tel1);
-                    Clients C2 = new Clients(tel2);
+                    Clients C2 = new Clients(AccNum);
+                    admin A = new admin(username);
                     Connctionfactory cf=new Connctionfactory();
-                    if (tel1.equals(tel2)) {
-                        JOptionPane.showMessageDialog(null, "Vous ne pouvez pas transférer de l'argent à vous-même.");
-                    } else if (C2.getNom() != null) {
-                        int k = C1.retrait(montant);
-                        if(k==1){
+                    if (C2.getNom() != null) {
                             C2.depose(montant);
                             String trans_num =generateTransferNumber();
                             String query = "SELECT COUNT(*) AS count FROM transfert WHERE trans_id = '" + trans_num + "'";
@@ -99,13 +84,9 @@ public class transfertClient extends JFrame implements ActionListener {
                                 if (count > 0) {
                                     trans_num =generateTransferNumber();
                                 }
-                            query="insert into transfert(trans_id,fromWho,toWho,montant) values ('"+trans_num+"','"+tel1+"','"+tel2+"','"+montant+"')";
+                            query="insert into transfert(trans_id,fromWho,toWho,montant) values ('"+trans_num+"', 'agent N: " + A.getAgent_id() + "','"+C2.getTel()+"','"+montant+"')";
                             cf.smt.executeUpdate(query);
                             JOptionPane.showMessageDialog(null, "Transfert réussi! \nNuméro de transfert : " + trans_num, "Succès", JOptionPane.PLAIN_MESSAGE);
-                            }
-                        else{
-                            JOptionPane.showMessageDialog(null, "Votre solde est insuffisant pour effectuer cette transaction","Erreur",JOptionPane.ERROR_MESSAGE);
-                        }
                     } else {
                         JOptionPane.showMessageDialog(null, "Le destinataire n'a pas de compte bancaire complet.","Erreur",JOptionPane.ERROR_MESSAGE);
                     }

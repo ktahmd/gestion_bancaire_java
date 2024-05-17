@@ -1,14 +1,13 @@
 package bank;
 import javax.swing.*;
 
-import AccAdmin.MenuAgent;
-import AccAdmin.admin;
-import AccClient.Clients;
-import AccClient.MenuClient;
+import GUI_Admin.MenuAgent;
+import GUI_Admin.admin;
+import GUI_Client.Clients;
+import GUI_Client.MenuClient;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
 
 public class login extends JFrame implements ActionListener{
 	JLabel l1,l2,l3,l4;

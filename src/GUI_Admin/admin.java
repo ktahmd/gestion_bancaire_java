@@ -1,4 +1,4 @@
-package AccAdmin;
+package GUI_Admin;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

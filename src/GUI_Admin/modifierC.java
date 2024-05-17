@@ -1,26 +1,24 @@
-package AccAdmin;
+package GUI_Admin;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import ModifierForm.modifierA;
 
-import AccClient.Clients;
-
-public class supprimerClient extends JFrame implements ActionListener {
+public class modifierC extends JFrame implements ActionListener {
     JTextField tf1;
     JButton b1;
     String username;
-    public supprimerClient(String username) {
+    public modifierC(String username) {
         this.username = username;
-        setTitle("Supprimer client");
+        setTitle("Modifier un Compte");
         setLayout(null); 
 
-        JLabel l1 = new JLabel("Supprimer un client");
+        JLabel l1 = new JLabel("Modifier un Compte");
         l1.setFont(new Font("Arial", Font.BOLD, 35));
         l1.setHorizontalAlignment(SwingConstants.CENTER);
         l1.setBounds(130, 10, 300, 40); 
@@ -38,8 +36,8 @@ public class supprimerClient extends JFrame implements ActionListener {
         add(tf1);
 
 
-        b1 = new JButton("Supprimer compte");
-        b1.setBounds(180, 200, 100, 30); 
+        b1 = new JButton("modifier compte");
+        b1.setBounds(180, 200, 200, 30); 
         b1.setBackground(Color.black);
 		b1.setForeground(Color.WHITE);
         add(b1);
@@ -52,31 +50,15 @@ public class supprimerClient extends JFrame implements ActionListener {
         setVisible(true);
         getContentPane().setBackground(Color.WHITE);
     }
-
     @Override
     public void actionPerformed(ActionEvent ae) {
         try {
             if (ae.getSource() == b1) {
-                String AccNum = tf1.getText();
-                Clients C = new Clients(AccNum);
-                if (C.getNom() != null) {
-                    // Demander une confirmation à l'utilisateur
-                    int option = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de vouloir supprimer ce compte ?", "Confirmation", JOptionPane.YES_NO_OPTION);
-                    if (option == JOptionPane.YES_OPTION) {
-                        String Num= C.getAccNum();
-                        int id = C.getId();
-                        C.supprimerAcc(Num);
-                        C.supprimerClient(id);
-                        JOptionPane.showMessageDialog(null, "Compte supprimé avec succès.", "Succès", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Compte n'existe pas.", "Erreur", JOptionPane.ERROR_MESSAGE);
-                }
+                this.setVisible(false);
+                new modifierA(tf1.getText());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-
 }
