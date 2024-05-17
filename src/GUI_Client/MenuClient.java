@@ -9,6 +9,13 @@ import java.sql.*;
 
 
 public class MenuClient extends JFrame implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
     JLabel l1,l2,l3,l4,l5,l6,l7;
     JLabel lNum,lPrn, lNom, lTel,bl;
     JButton b0,b1,b2,b3,b4,mc,rl;

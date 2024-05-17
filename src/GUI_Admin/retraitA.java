@@ -20,6 +20,13 @@ import bank.Connctionfactory;
 
 
 public class retraitA extends JFrame implements ActionListener {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
     JTextField tf1, tf2;
     JButton b1;
     String username;

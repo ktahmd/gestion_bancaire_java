@@ -5,6 +5,9 @@ public class Connctionfactory{
     public Statement smt;
 
     public Connctionfactory(){
+    /**
+	 * 
+	 */
         //connection MYSQL
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

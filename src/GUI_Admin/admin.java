@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import bank.Connctionfactory;
 
 public class admin extends Connctionfactory {
+    /**
+	 * 
+	 */
     String agent_id;
     String username;
     String pass;

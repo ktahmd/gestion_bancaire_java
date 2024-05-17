@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import bank.Connctionfactory;
 
 public class Clients {
+    /**
+	 * 
+	 */
     int client_id;
     String nom;
     String prenom;
@@ -18,6 +21,7 @@ public class Clients {
     Connctionfactory cf=new Connctionfactory();
     
     public Clients(String Num) throws SQLException{
+        
     String query="select *from clients c join clientacc a on c.id=a.client_id Where c.tel='"+Num+"' or a.Acc_num='"+Num+"'";
         try (ResultSet rs = cf.smt.executeQuery(query)) {
             if (rs.next()) { 

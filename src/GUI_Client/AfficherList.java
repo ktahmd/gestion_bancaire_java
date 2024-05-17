@@ -11,6 +11,14 @@ import java.sql.SQLException;
 import bank.Connctionfactory;
 
 public class AfficherList extends JFrame {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
     public AfficherList(String tel) {
         setTitle("Dernières activités");
         DefaultTableModel tableModel = new DefaultTableModel();

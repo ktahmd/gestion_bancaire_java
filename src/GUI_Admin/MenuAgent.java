@@ -10,7 +10,11 @@ import bank.login;
 
 
 public class MenuAgent extends JFrame implements ActionListener{
-    JLabel l1,l2,l3,l4,l5,tl,nom;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JLabel l1,l2,l3,l4,l5,tl,nom;
     JButton b0,b1,b2,b3,b4;
     String username;
     

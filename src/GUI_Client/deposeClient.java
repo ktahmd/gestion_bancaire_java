@@ -5,6 +5,13 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 public class deposeClient extends JFrame {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
     JLabel l1, l2, lNum;
 
     public deposeClient(String tel) {

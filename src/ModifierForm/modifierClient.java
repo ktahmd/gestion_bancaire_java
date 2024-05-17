@@ -14,6 +14,13 @@ import java.sql.SQLException;
 // import com.toedter.calendar.*;
 
 public class modifierClient extends JFrame implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
     JLabel l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11;
 	JLabel backgroundLabel;
 	JTextField tf1,tf2,tf3,tf4,tf5,tf6,tf7,tf8;

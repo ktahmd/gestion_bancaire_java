@@ -12,6 +12,13 @@ import javax.swing.SwingConstants;
 import GUI_Client.Clients;
 
 public class supprimerClient extends JFrame implements ActionListener {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
     JTextField tf1;
     JButton b1;
     String username;

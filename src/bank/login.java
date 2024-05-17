@@ -10,6 +10,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class login extends JFrame implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	JLabel l1,l2,l3,l4;
 	JTextField tf1;
 	JPasswordField pf2;
@@ -19,6 +26,7 @@ public class login extends JFrame implements ActionListener{
 
 	public login(){
 		setTitle("Systeme de Gestion Bancaire");
+		
 		//bienvenue
 		setLayout(null);
 		l1=new JLabel("BIENVENIE");
