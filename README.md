@@ -74,10 +74,9 @@ Les fichiers JAR accompagnent le fichier projet vsbank dans :
 vsbank\clanderjar\lib\jcalendar-1.4.jar
 vsbank\sqljar\mysql-connector-j-8.4.0.jar
 
-![img liste](img/path.png)
+![img path](img/path.png)
 
 ## Exécuter l'application
 Vous pouvez exécuter l'application sur la classe ApplicationRun.java dans le defaultpakage.
-
-
+![img str](img/str.png)
 
