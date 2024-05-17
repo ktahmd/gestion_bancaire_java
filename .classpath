@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/SURFACE BOOK/Desktop/vsbank/clanderjar/lib/jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/SURFACE BOOK/Desktop/vsbank/sqljar/mysql-connector-j-8.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SURFACE BOOK/Desktop/vsbank/clanderjar/lib/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
