@@ -1,5 +1,5 @@
 import bank.login;
-public class Main {
+public class ApplicationRun {
     public static void main(String[] args) {
         new login();
     }

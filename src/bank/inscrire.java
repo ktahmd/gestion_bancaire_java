@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 // import com.toedter.calendar.*;
-// import java.util.Random;
 import java.util.Random;
 
 public class inscrire extends JFrame implements ActionListener{
@@ -147,14 +146,13 @@ public class inscrire extends JFrame implements ActionListener{
 		// getContentPane().add(new JLabel(backgroundImage), BorderLayout.CENTER);
 
 		// getContentPane().setBackground(Color.WHITE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 		setSize(800,560);
 		setLocation(280,200);
 		
     }
-    public static void main(String[] args){
-        new inscrire();
-    }
+
     @SuppressWarnings("deprecation")
 	@Override
     public void actionPerformed(ActionEvent e) {
@@ -180,22 +178,22 @@ public class inscrire extends JFrame implements ActionListener{
 						//insertion sur db
 						try{
 							if(tf2.getText().equals("")){
-								JOptionPane.showMessageDialog(null,"Entrez votre nom!");
+								JOptionPane.showMessageDialog(null,"Entrez votre nom!","Erreur",JOptionPane.ERROR_MESSAGE);
 							}
 							else if(tf3.getText().equals("")){
-								JOptionPane.showMessageDialog(null,"Entrez votre prenom!");
+								JOptionPane.showMessageDialog(null,"Entrez votre prenom!","Erreur",JOptionPane.ERROR_MESSAGE);
 							}else if(tf4.getText().equals("") || !tf4.getText().matches("\\d{8}")){
-								JOptionPane.showMessageDialog(null,"Entrez un numéro de téléphone valide!");
+								JOptionPane.showMessageDialog(null,"Entrez un numéro de téléphone valide!","Erreur",JOptionPane.ERROR_MESSAGE);
 							}else if(tf5.getText().equals("")){
-								JOptionPane.showMessageDialog(null,"Entrez votre email!");
+								JOptionPane.showMessageDialog(null,"Entrez votre email!","Erreur",JOptionPane.ERROR_MESSAGE);
 							}
 							else if(tf6.getText().equals("")){
-								JOptionPane.showMessageDialog(null,"Entrez votre adress!");
+								JOptionPane.showMessageDialog(null,"Entrez votre adress!","Erreur",JOptionPane.ERROR_MESSAGE);
 							}
 							else if(pf2.getText().equals("")){
-								JOptionPane.showMessageDialog(null,"Entrez votre password!");
+								JOptionPane.showMessageDialog(null,"Entrez votre password!","Erreur",JOptionPane.ERROR_MESSAGE);
 							}else if(rs.next()){
-								JOptionPane.showMessageDialog(null,"Le numero téléphone est deja inscrit!");
+								JOptionPane.showMessageDialog(null,"Le numero téléphone est deja inscrit!","Erreur",JOptionPane.ERROR_MESSAGE);
 							}
 							else{
 								//Insert data into 'clients' table
@@ -220,7 +218,7 @@ public class inscrire extends JFrame implements ActionListener{
 										query = "INSERT INTO clientAcc(Acc_num, client_id, balance) VALUES ('" + accountNum + "', " + client_id + ", 0)";
 										cf.smt.executeUpdate(query);
 										//afficher une msg de reussie
-										JOptionPane.showMessageDialog(null, "Inscription réussie");
+										JOptionPane.showMessageDialog(null, "Inscription réussie", "Succès", JOptionPane.PLAIN_MESSAGE);
 									}
 								}
 							}

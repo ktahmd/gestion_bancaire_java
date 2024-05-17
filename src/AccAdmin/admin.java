@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import bank.Connctionfactory;
 
 public class admin extends Connctionfactory {
+    String agent_id;
     String username;
     String pass;
     String tel;
@@ -13,13 +14,11 @@ public class admin extends Connctionfactory {
 		String query="select *from admin where user_name='"+user+"'";
         try (ResultSet rs = cf.smt.executeQuery(query)) {
             if (rs.next()) { // Check if ResultSet has any data
+                this.agent_id = rs.getString("id");
                 this.username = rs.getString("user_name");
                 this.pass = rs.getString("pass");
                 this.tel = rs.getString("tel");
-            } else {
-                // Handle case where no data is found for the given user
-                throw new SQLException("User not found");
-            }
+            } 
         }
     }
     public String getUsername() {
@@ -30,6 +29,9 @@ public class admin extends Connctionfactory {
     }
     public String getTel() {
         return tel;
+    }
+    public String getAgent_id() {
+        return agent_id;
     }
 
 }

@@ -1,7 +1,10 @@
 package bank;
 import javax.swing.*;
 
+import AccAdmin.MenuAgent;
 import AccAdmin.admin;
+import AccClient.Clients;
+import AccClient.MenuClient;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -79,7 +82,7 @@ public class login extends JFrame implements ActionListener{
 		iblimage.setBounds(0,0,800,500);
 		add(iblimage);
 
-
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(Color.WHITE);
 		setVisible(true);
 		setSize(800,500);
@@ -88,25 +91,23 @@ public class login extends JFrame implements ActionListener{
 	}
 	
 	@Override
+	@SuppressWarnings("deprecation")
 	public void actionPerformed(ActionEvent ae) {
 		try {
 			if(ae.getSource() == b1){
-				Connctionfactory cf=new Connctionfactory();
 				String tel= tf1.getText();
-				@SuppressWarnings("deprecation")
 				String pass= pf2.getText();
-				String query="select *from clients where tel='"+tel+"' and pass='"+pass+"' ";
-				ResultSet rs=cf.smt.executeQuery(query);
+				Clients C = new Clients(tel);
 				admin A = new admin(tel);
-				if(rs.next()){
+				if(tel.equals(C.getTel())&&(pass.equals(C.getPass()))){
 					setVisible(false);
-					new Transactions(tel).setVisible(true);
+					new MenuClient(tel).setVisible(true);
 				}else if(tel.equals(A.getUsername())&&(pass.equals(A.getPass()))){
 					setVisible(false);
-					new TransactionsAgent(tel).setVisible(true);
+					new MenuAgent(tel).setVisible(true);
 				}
 				else{
-					JOptionPane.showMessageDialog(null,"Le numéro de téléphone ou le mot de passe est incorrect !");
+					JOptionPane.showMessageDialog(null,"Le numéro de téléphone ou le mot de passe est incorrect !","Erreur",JOptionPane.ERROR_MESSAGE);
 				}
 			} else if(ae.getSource() == b2){
 				
@@ -123,7 +124,5 @@ public class login extends JFrame implements ActionListener{
 		}
 	}
 
-	public static void main(String[] args) {
-		new login();
-    }
+
 }

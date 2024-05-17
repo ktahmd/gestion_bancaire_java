@@ -6,6 +6,69 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Clients",
+            "request": "launch",
+            "mainClass": "AccClient.Clients",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
+            "name": "supprimerClient",
+            "request": "launch",
+            "mainClass": "AccAdmin.supprimerClient",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
+            "name": "retraitA",
+            "request": "launch",
+            "mainClass": "AccAdmin.retraitA",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
+            "name": "deposeA",
+            "request": "launch",
+            "mainClass": "AccAdmin.deposeA",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
+            "name": "transfertClient",
+            "request": "launch",
+            "mainClass": "AccClient.transfertClient",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
+            "name": "retraitClient",
+            "request": "launch",
+            "mainClass": "AccClient.retraitClient",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
+            "name": "deposeClient",
+            "request": "launch",
+            "mainClass": "AccClient.deposeClient",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
+            "name": "Transactions",
+            "request": "launch",
+            "mainClass": "AccClient.Transactions",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
+            "name": "ApplicationRun",
+            "request": "launch",
+            "mainClass": "ApplicationRun",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
