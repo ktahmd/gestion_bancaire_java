@@ -4,7 +4,20 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "MenuClient",
+            "request": "launch",
+            "mainClass": "GUI_Client.MenuClient",
+            "projectName": "vsbank"
+        },
+        {
+            "type": "java",
+            "name": "AfficherList",
+            "request": "launch",
+            "mainClass": "GUI_Client.AfficherList",
+            "projectName": "vsbank"
+        },
         {
             "type": "java",
             "name": "modifierA",

@@ -3,6 +3,7 @@ package ModifierForm;
 import javax.swing.*;
 
 import GUI_Client.Clients;
+import GUI_Client.MenuClient;
 import bank.Connctionfactory;
 
 import java.awt.*;
@@ -141,8 +142,6 @@ public class modifierClient extends JFrame implements ActionListener{
 		b1.setForeground(Color.WHITE);
 		add(b1);
 		b1.addActionListener(this);
-
-
 		getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
@@ -200,6 +199,10 @@ public class modifierClient extends JFrame implements ActionListener{
 								"WHERE id = " + id; 
 								cf.smt.executeUpdate(query);
 								JOptionPane.showMessageDialog(null, "Compte modifie avec succès.", "Succès", JOptionPane.INFORMATION_MESSAGE);
+								this.setVisible(false);
+								
+								
+								
 							}
 							
 						}
@@ -209,8 +212,17 @@ public class modifierClient extends JFrame implements ActionListener{
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
+					if (!telold.equals(telnew)) {
+						try {
+							new MenuClient(telnew);
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						}
+					}
 			}
+			
 	}
+
 
 }
 

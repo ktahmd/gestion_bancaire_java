@@ -102,6 +102,7 @@ public class transfertClient extends JFrame implements ActionListener {
                             query="insert into transfert(trans_id,fromWho,toWho,montant) values ('"+trans_num+"','"+tel1+"','"+tel2+"','"+montant+"')";
                             cf.smt.executeUpdate(query);
                             JOptionPane.showMessageDialog(null, "Transfert réussi! \nNuméro de transfert : " + trans_num, "Succès", JOptionPane.PLAIN_MESSAGE);
+                            this.setVisible(false);
                             }
                         else{
                             JOptionPane.showMessageDialog(null, "Votre solde est insuffisant pour effectuer cette transaction","Erreur",JOptionPane.ERROR_MESSAGE);

@@ -87,6 +87,7 @@ public class deposeA extends JFrame implements ActionListener {
                             query="insert into transfert(trans_id,fromWho,toWho,montant) values ('"+trans_num+"', 'agent N: " + A.getAgent_id() + "','"+C2.getTel()+"','"+montant+"')";
                             cf.smt.executeUpdate(query);
                             JOptionPane.showMessageDialog(null, "Transfert réussi! \nNuméro de transfert : " + trans_num, "Succès", JOptionPane.PLAIN_MESSAGE);
+                            this.setVisible(false);
                     } else {
                         JOptionPane.showMessageDialog(null, "Le destinataire n'a pas de compte bancaire complet.","Erreur",JOptionPane.ERROR_MESSAGE);
                     }

@@ -97,6 +97,7 @@ public class retraitA extends JFrame implements ActionListener {
                             query="insert into transfert(trans_id,fromWho,toWho,montant) values ('"+trans_num+"','"+C2.getTel()+"','agent N: " + A.getAgent_id() + "','"+montant+"')";
                             cf.smt.executeUpdate(query);
                             JOptionPane.showMessageDialog(null, "Transfert réussi! \nNuméro de transfert : " + trans_num, "Succès", JOptionPane.PLAIN_MESSAGE);
+                            this.setVisible(false);
                             }
                         else{
                             JOptionPane.showMessageDialog(null, "La solde du ce client est insuffisant pour effectuer cette transaction","Erreur",JOptionPane.ERROR_MESSAGE);

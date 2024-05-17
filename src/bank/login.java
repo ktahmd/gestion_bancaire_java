@@ -75,7 +75,7 @@ public class login extends JFrame implements ActionListener{
 
 		//background
         ImageIcon bk = new ImageIcon(getClass().getResource("icons/backgroundlogin.jpg"));
-		Image Ik=bk.getImage().getScaledInstance(800,540,Image.SCALE_DEFAULT);
+		Image Ik=bk.getImage().getScaledInstance(800,540,java.awt.Image.SCALE_SMOOTH);
 		ImageIcon i3=new ImageIcon(Ik);
 		JLabel iblimage=new JLabel(i3);
 		iblimage.setBounds(0,0,800,500);

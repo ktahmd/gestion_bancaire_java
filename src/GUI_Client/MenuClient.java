@@ -11,7 +11,7 @@ import java.sql.*;
 public class MenuClient extends JFrame implements ActionListener{
     JLabel l1,l2,l3,l4,l5,l6,l7;
     JLabel lNum,lPrn, lNom, lTel,bl;
-    JButton b0,b1,b2,b3,b4,mc;
+    JButton b0,b1,b2,b3,b4,mc,rl;
     String tel;
     
     public MenuClient(String tel) throws SQLException{
@@ -36,6 +36,18 @@ public class MenuClient extends JFrame implements ActionListener{
 		mc.setBackground(Color.black);
 		mc.setForeground(Color.WHITE);
 		add(mc);
+		//reloading buttom
+		ImageIcon icon = new ImageIcon(getClass().getResource("icons/reload.png"));
+		Image img = icon.getImage();
+		Image newImg = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		icon = new ImageIcon(newImg);
+		rl = new JButton(icon);
+		rl.setFont(new Font("Tahoma", Font.BOLD, 16));
+		rl.setBounds(1180, 145, 50, 50);
+		rl.setBackground(Color.WHITE);
+		rl.setText(null);
+		add(rl);
+
 		//Num
 		l2=new JLabel("Numero:");
 		l2.setFont(new Font("Tohoma",Font.BOLD, 16));
@@ -133,16 +145,7 @@ public class MenuClient extends JFrame implements ActionListener{
 		b4.setBackground(Color.black);
 		b4.setForeground(Color.WHITE);
 		add(b4);
-        //image background
-        
-        // ImageIcon bk = new ImageIcon(getClass().getResource("icons/backgroundlogin.jpg"));
-		// Image Ik=bk.getImage().getScaledInstance(800,560,Image.SCALE_DEFAULT);
-		// ImageIcon i3=new ImageIcon(Ik);
-		// JLabel iblimage=new JLabel(i3);
-		// iblimage.setBounds(0,0,800,560);
-		// add(iblimage);
-        
-
+		
         //button action
         b0.addActionListener(this);
         b1.addActionListener(this);
@@ -150,8 +153,9 @@ public class MenuClient extends JFrame implements ActionListener{
         b3.addActionListener(this);
         b4.addActionListener(this);
 		mc.addActionListener(this);
+		rl.addActionListener(this);
 
-
+		getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1500,1000);
         setLocation(0,0);
@@ -174,11 +178,19 @@ public class MenuClient extends JFrame implements ActionListener{
 			}else if(ae.getSource() == b3){
 				new transfertClient(tel);
 			}else if(ae.getSource() == b4){
-				
+				new AfficherList(tel);
+			}else if(ae.getSource() == rl){
+				reload();
 			}
 		} catch(Exception e){
 			e.printStackTrace();
 		}
     }
+
+	public void reload() throws SQLException{
+		this.setVisible(false);
+		new MenuClient(tel);
+	}
+
 
 }

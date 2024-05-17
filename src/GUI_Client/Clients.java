@@ -18,7 +18,7 @@ public class Clients {
     Connctionfactory cf=new Connctionfactory();
     
     public Clients(String Num) throws SQLException{
-    String query="select *from clients c, clientacc a where c.id=a.client_id and c.tel='"+Num+"' or a.Acc_num='"+Num+"'";
+    String query="select *from clients c join clientacc a on c.id=a.client_id Where c.tel='"+Num+"' or a.Acc_num='"+Num+"'";
         try (ResultSet rs = cf.smt.executeQuery(query)) {
             if (rs.next()) { 
                 this.client_id = rs.getInt("client_id");

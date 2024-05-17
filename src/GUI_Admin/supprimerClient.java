@@ -68,6 +68,7 @@ public class supprimerClient extends JFrame implements ActionListener {
                         C.supprimerAcc(Num);
                         C.supprimerClient(id);
                         JOptionPane.showMessageDialog(null, "Compte supprimé avec succès.", "Succès", JOptionPane.INFORMATION_MESSAGE);
+                        this.setVisible(false);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Compte n'existe pas.", "Erreur", JOptionPane.ERROR_MESSAGE);

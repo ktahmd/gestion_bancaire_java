@@ -35,7 +35,7 @@ public class deposeClient extends JFrame {
 
         // Image panel
         ImageIcon bk = new ImageIcon(getClass().getResource("icons/Agence.png"));
-        Image Ik = bk.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        Image Ik = bk.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         ImageIcon i3 = new ImageIcon(Ik);
         JLabel iblimage = new JLabel(i3);
         iblimage.setHorizontalAlignment(SwingConstants.CENTER);
