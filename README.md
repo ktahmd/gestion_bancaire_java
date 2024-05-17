@@ -7,9 +7,10 @@ Le système bancaire est une application Java Swing qui simule les opérations b
 - Connexion en tant qu'administrateur ou client
 - Inscription de nouveaux clients
 - Transactions de dépôt et de retrait
-- Consultation du solde
+- afficher du Blance
 - Historique des transactions
-- Mise à jour des informations du compte
+- modifier les informations du compte
+- supprimer un compte
 - Interface utilisateur conviviale pour l'administrateur/client avec Java Swing et AWT
 - Base de données MYSQL
 
@@ -69,12 +70,15 @@ insert into admin(user_name,pass,tel) values
 
 
 ## Chemin vers le fichier SQLJAR
-Ajoutez de nouveaux fichiers JAR externes sur le chemin de classe à partir de eclipse docier Propriétés > Chemin de construction Java > Bibliothèques > Chemin de classe > Ajouter des fichiers JAR externes.
-Les fichiers JAR accompagnent le fichier projet vsbank dans :
+Ajoutez de nouveaux fichiers JAR externes sur le chemin de classe à partir de eclipse docier :
+proprietie > java build path > Libaries > classpath > add external jars.
+
+Vous pouvez obtenir les fichiers jar sut la fichier vsbank dans les chemins suivants:
 vsbank\clanderjar\lib\jcalendar-1.4.jar
 vsbank\sqljar\mysql-connector-j-8.4.0.jar
 
 ![img path](img/path.png)
+
 
 ## Exécuter l'application
 Vous pouvez exécuter l'application sur la classe ApplicationRun.java dans le defaultpakage.
