@@ -84,3 +84,26 @@ vsbank\sqljar\mysql-connector-j-8.4.0.jar
 Vous pouvez exécuter l'application sur la classe ApplicationRun.java dans le defaultpakage.
 ![img str](img/str.png)
 
+
+
+## Compte administrateur
+Nous avons inséré deux comptes d'administrateur dans la base de données :
+- admin1 avec le mot de passe 1234
+- et
+- admin2 avec le mot de passe 1212
+
+Vous pouvez vous connecter en tant qu'administrateur avec ces deux comptes. Il vous suffit de saisir "admin1" dans le champ "numéro de téléphone" et le mot de passe dans le champ "mot de passe".
+
+## Compte client
+Pour vous inscrire en tant que client, veuillez remplir le formulaire d'inscription. Une fois inscrit, vous pourrez vous connecter en tant que client en utilisant votre numéro de téléphone et votre mot de passe.
+
+## Erreur
+Pour toutes les erreurs, nous avons créé des JOptionPane pour vous informer.
+
+![img 1](img/1.png)
+![img 2](img/2.png)
+![img 3](img/3.png)
+![img 4](img/4.png)
+
+
+
